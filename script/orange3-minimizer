@@ -1,0 +1,13 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+
+use lib qw/lib/;
+
+use Orange3::Mini;
+
+my $runner = Orange3::Mini->new();
+$runner->parse_options(@ARGV);
+$runner->run;
+

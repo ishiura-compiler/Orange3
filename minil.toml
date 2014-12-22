@@ -1,0 +1,4 @@
+name = "Orange3"
+script_files = ['script/*', 'config/.*']
+[FileGatherer]
+ include_dotfiles=true

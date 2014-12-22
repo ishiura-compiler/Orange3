@@ -1,0 +1,60 @@
++{
+  execute => sub {
+    my $config     = shift;
+    my $exec_error = [];
+    my $error_msg  = "";
+    my $command    = "./$config->{exec_file}";
+
+    print STDERR "$command\n" if $config->{debug_mode};
+
+    # Execute the command
+    my $output = `$command 2>&1`;
+    my $count  = -1;
+
+    unless ( $output =~ /(OK|NG)/ ) {
+
+      # Executing is failed
+      if ( $output eq "" ) {
+
+        # Re-execute the command
+        $output = `$command 2>&1 3>&1`;
+      }
+      if ( $output eq "" ) {
+
+        # Executing is failed
+        $output = "execution error! ($command)\n";
+      }
+      print "$output\n";
+
+      # push exec_error <= -1
+      push @$exec_error, $count;
+      $error_msg = $output;
+    }
+    else {
+      # Executing is successful
+      my @lines = split m{\n}, $output;
+      for my $line (@lines) {
+        if ( $line =~ /OK/ ) {
+          $count++;
+        }
+        elsif ( $line =~ /NG/ ) {
+          $count++;
+          print "$count: $line\n";
+          push @$exec_error, $count;
+          $error_msg .= "$count: $line\n";
+        }
+        else { ; }
+      }
+
+      if ( @{$exec_error} == 0 ) {
+        print "\@OK\@";
+      }
+    }
+
+    # error_msg  ... Error message for LOG
+    # exec_error ... Numbers of the errored arithmetic expression
+    # (succeess:no array elements, fail:some array elements)
+    # command    ... Command for reproducing
+    return ( $error_msg, $exec_error, $command );
+  },
+  }

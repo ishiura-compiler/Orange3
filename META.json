@@ -1,0 +1,80 @@
+{
+   "abstract" : "Randomtest of C compilers",
+   "author" : [
+      "Ishiura Lab. <ishiura-compiler@ml.kwansei.ac.jp>"
+   ],
+   "dynamic_config" : 0,
+   "generated_by" : "Minilla/v2.3.0, CPAN::Meta::Converter version 2.143240",
+   "license" : [
+      "perl_5"
+   ],
+   "meta-spec" : {
+      "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
+      "version" : "2"
+   },
+   "name" : "Orange3",
+   "no_index" : {
+      "directory" : [
+         "t",
+         "xt",
+         "inc",
+         "share",
+         "eg",
+         "examples",
+         "author",
+         "builder"
+      ]
+   },
+   "prereqs" : {
+      "configure" : {
+         "requires" : {
+            "Module::Build" : "0.38",
+            "Module::Install" : "0",
+            "Module::Install::CPANfile" : "0"
+         }
+      },
+      "develop" : {
+         "requires" : {
+            "Test::CPAN::Meta" : "0",
+            "Test::MinimumVersion::Fast" : "0.04",
+            "Test::PAUSE::Permissions" : "0.04",
+            "Test::Pod" : "1.41",
+            "Test::Spellunker" : "v0.2.7"
+         }
+      },
+      "runtime" : {
+         "requires" : {
+            "CPAN::Meta" : "0",
+            "Carp" : "0",
+            "Data::Dumper" : "0",
+            "Encode" : "0",
+            "File::Basename" : "0",
+            "File::Copy" : "0",
+            "File::Path" : "0",
+            "File::Spec" : "0",
+            "File::Temp" : "0",
+            "FindBin" : "0",
+            "Getopt::Long" : "0",
+            "List::MoreUtils" : "0",
+            "Math::BigFloat" : "0",
+            "Math::BigInt" : "0",
+            "Math::BigInt::FastCalc" : "0.27",
+            "Math::BigInt::GMP" : "1.37",
+            "Math::BigInt::Pari" : "1.16",
+            "POSIX" : "0",
+            "Test::More" : "0",
+            "Time::HiRes" : "0",
+            "base" : "0",
+            "perl" : "5.008001"
+         }
+      },
+      "test" : {
+         "requires" : {
+            "List::MoreUtils" : "0.33",
+            "Test::More" : "0.98"
+         }
+      }
+   },
+   "release_status" : "unstable",
+   "version" : "3.00",
+}

@@ -1,0 +1,49 @@
++{
+  compile => sub {
+    my ( $config, $option ) = @_;
+
+    my $command =
+"$config->{compiler} $config->{source_file} -o $config->{exec_file} $option";
+    my $error = 0;
+
+    while (1) {
+      print STDERR "$command\n" if $config->{debug_mode};
+
+      # Execute the command
+      my $output = `$command 2>&1`;
+
+      if ( $output =~ /error/ ) {
+
+        # Compiling is failed
+        print $output;
+        $error = $output;
+        last;
+      }
+      elsif ( $output =~ /function/ ) {
+
+        # Compiling is failed temporarily
+        last;
+      }
+      elsif ( $output =~ /resource/ ) {
+
+        # Compiling is failed temporarily
+        ;
+      }
+      elsif ( $output ne '' ) {
+
+        # Compiling is failed
+        print $output;
+        $error = $output;
+        last;
+      }
+      else {
+        # Compiling is successful
+        last;
+      }
+    }
+
+    # error   ... Error message for LOG (Success:0, Error:message)
+    # command ... Command for reproducing
+    return ( $error, $command );
+    }
+  }

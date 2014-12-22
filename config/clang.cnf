@@ -1,0 +1,164 @@
++{
+  debug_mode => 0,
+
+  # Multiplication of number of operators and expressionis
+  e_size_num => 301,
+
+  # Option of the compiler, separated by commas
+  options => ["-O3"],
+
+  # Name of C file
+  source_file => 'clang-test.c',
+
+  # Name of Executable file
+  exec_file => 'clang-test.out',
+
+  # Macro (OK) of C source
+  macro_ok => 'printf("@OK@\n")',
+
+  # Macro (NG) of C source
+  macro_ng => 'printf("@NG@ (test = " fmt ")\n",val)',
+
+  # Command of the compiler
+  compiler => 'clang',
+
+  # Operators, separated by spaces
+  operators => [
+    qw(+ + + - - - * * * * * * / / / / / / % % % % % % << << << << << << >> >> >> >> >> >> == != < > <= >= && || | | | & & & ^ ^ ^)
+  ],
+
+  # Storage classes, separated by commas
+  classes => [ "static", "" ],
+
+  # Modifiers, separated by commas
+  # ("const" is unused in some variables.)
+  modifiers => [ "const", "volatile", "const volatile", "" ],
+
+  # Types, separated by commas
+  types => [
+    "signed char",
+    "unsigned char",
+    "signed short",
+    "unsigned short",
+    "signed int",
+    "unsigned int",
+    "signed long",
+    "unsigned long",
+    "signed long long",
+    "unsigned long long",
+    "float",
+    "double",
+    "long double",
+  ],
+
+  # Scopes, separated by commas
+  scopes => [ "LOCAL", "GLOBAL" ],
+
+  # Details of types
+  type => {
+    "signed char" => {
+      order         => 1,
+      printf_format => '%d',
+      const_suffix  => '',
+      bits          => 8,
+      min           => -128,
+      max           => 127,
+    },
+    "unsigned char" => {
+      order         => 2,
+      printf_format => '%u',
+      const_suffix  => 'U',
+      bits          => 8,
+      min           => 0,
+      max           => 255,
+    },
+    "signed short" => {
+      order         => 3,
+      printf_format => '%hhd',
+      const_suffix  => '',
+      bits          => 16,
+      min           => -32768,
+      max           => 32767,
+    },
+    "unsigned short" => {
+      order         => 4,
+      printf_format => '%hhu',
+      const_suffix  => 'U',
+      bits          => 16,
+      min           => 0,
+      max           => 65535,
+    },
+    "signed int" => {
+      order         => 5,
+      printf_format => '%d',
+      const_suffix  => '',
+      bits          => 32,
+      min           => -2147483648,
+      max           => 2147483647,
+    },
+    "unsigned int" => {
+      order         => 6,
+      printf_format => '%u',
+      const_suffix  => 'U',
+      bits          => 32,
+      min           => 0,
+      max           => 4294967295,
+    },
+    "signed long" => {
+      order         => 7,
+      printf_format => '%ld',
+      const_suffix  => 'L',
+      bits          => 64,
+      min           => -9223372036854775808,
+      max           => 9223372036854775807,
+    },
+    "unsigned long" => {
+      order         => 8,
+      printf_format => '%lu',
+      const_suffix  => 'LU',
+      bits          => 64,
+      min           => 0,
+      max           => '18446744073709551615',
+    },
+    "signed long long" => {
+      order         => 9,
+      printf_format => '%lld',
+      const_suffix  => 'LL',
+      bits          => 64,
+      min           => -9223372036854775808,
+      max           => 9223372036854775807,
+    },
+    "unsigned long long" => {
+      order         => 10,
+      printf_format => '%llu',
+      const_suffix  => 'LLU',
+      bits          => 64,
+      min           => 0,
+      max           => '18446744073709551615',
+    },
+    "float" => {
+      order         => 11,
+      printf_format => '%0.5e',
+      const_suffix  => 'F',
+      bits          => 24,
+      min           => -8388608,
+      max           => 8388607,
+    },
+    "double" => {
+      order         => 12,
+      printf_format => '%0.15e',
+      const_suffix  => '',
+      bits          => 53,
+      min           => -4503599627370496,
+      max           => 4503599627370495,
+    },
+    "long double" => {
+      order         => 13,
+      printf_format => '%0.17Le',
+      const_suffix  => 'L',
+      bits          => 65,
+      min           => '-18446744073709551616',
+      max           => '18446744073709551615',
+    },
+  }
+  }
