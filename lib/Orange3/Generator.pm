@@ -164,7 +164,7 @@ sub generate_t_var {
     modifier  => random_select(
       [ 'volatile', '', '', '', '', '', '', '', '', '', '', '', '' ]
     ),
-    scope => 'GLOBAL',
+    scope => random_select( $self->{config}->get('scopes') ),
     used  => 1,
   };
 }
